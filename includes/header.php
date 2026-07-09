@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-include dirname(__DIR__) . "/security.php";;
+include_once dirname(__DIR__) . "/security.php";
 
 ?>
 

@@ -2,6 +2,8 @@
 
 include "config.php";
 include "recaptcha.php";
+include "csrf.php";
+
 
 
 $message = "";
@@ -9,6 +11,7 @@ $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    verifyCSRFToken($_POST["csrf_token"] ?? "");
 
     $username = trim($_POST["username"]);
 
@@ -180,6 +183,11 @@ echo $message;
 
 
 <form method="POST">
+
+<input 
+type="hidden" 
+name="csrf_token"
+value="<?php echo generateCSRFToken(); ?>">
 
 
 
